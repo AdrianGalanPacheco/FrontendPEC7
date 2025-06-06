@@ -1,0 +1,42 @@
+<div class="card shadow-sm mb-4 p-3" [ngClass]="{
+    'border-success bg-light': article.isOnSale,
+    'border-secondary': !article.isOnSale
+  }">
+    <div class="d-flex align-items-center">
+        <!-- Article image -->
+        <img [src]="article.imageUrl | defaultImage" alt="{{ article.name }}" class="rounded me-4 article-image"
+            (click)="goToDetail(article.id)" />
+
+
+        <!-- Article info -->
+        <div class="flex-grow-1">
+            <h5 class="mb-2 fw-semibold">
+                {{ article.name }}
+                <span class="ms-2" [ngClass]="{ 'text-muted': !article.isOnSale }">
+                    {{ article.price | number:'1.2-2' }}€
+                </span>
+            </h5>
+
+            <p class="mb-3">
+                <span class="badge px-3 py-2" [ngClass]="{
+            'bg-success text-white': article.isOnSale,
+            'bg-secondary': !article.isOnSale
+          }">
+                    {{ article.isOnSale ? 'On Sale!' : 'Not for sale' }}
+                </span>
+            </p>
+
+            <!-- Quantity buttons -->
+            <div *ngIf="article.isOnSale" class="d-flex align-items-center gap-3">
+                <button class="btn btn-outline-danger btn-sm" (click)="changeQuantity(-1)"
+                    [disabled]="article.quantityInCart === 0">
+                    −
+                </button>
+                <span class="fw-bold">{{ article.quantityInCart }}</span>
+                <button class="btn btn-outline-primary btn-sm" (click)="changeQuantity(1)">
+                    ＋
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

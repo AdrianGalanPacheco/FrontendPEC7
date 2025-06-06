@@ -1,0 +1,32 @@
+.article-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.card.border-success.bg-light {
+    border-color: green;
+    background-color: lightgreen;
+}
+
+.card.border-secondary {
+    border-color: gray;
+}
+
+.badge.bg-success.text-white {
+    background-color: green;
+    color: white;
+}
+
+.badge.bg-secondary {
+    background-color: gray;
+}
+
+button {
+    padding: 6px 12px;
+}
+
+button:disabled {
+    color: gray;
+    border-color: gray;
+}

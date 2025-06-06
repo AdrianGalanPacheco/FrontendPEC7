@@ -1,0 +1,23 @@
+.navbar-nav {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav-item {
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: gray;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: white;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: rgb(170, 168, 168);
+    border-radius: 5px;
+    cursor: pointer;
+}

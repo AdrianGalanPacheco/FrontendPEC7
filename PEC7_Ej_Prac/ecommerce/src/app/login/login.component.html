@@ -1,0 +1,37 @@
+<!-- Title -->
+<div class="text-center mb-4">
+  <h2>Login</h2>
+</div>
+
+<!-- Error message -->
+<div *ngIf="loginFailed" class="alert alert-danger text-center mt-3">
+  Invalid credentials. Please try again.
+</div>
+
+<!-- Form -->
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="w-100">
+  <!-- Username -->
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input id="username" type="text" class="form-control" formControlName="username" placeholder="Enter username"
+      [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" />
+    <div class="invalid-feedback">
+      Username is required.
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input id="password" type="password" class="form-control" formControlName="password" placeholder="Enter password"
+      [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" />
+    <div class="invalid-feedback">
+      Password is required.
+    </div>
+  </div>
+
+  <!-- Button -->
+  <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+    Login
+  </button>
+</form>

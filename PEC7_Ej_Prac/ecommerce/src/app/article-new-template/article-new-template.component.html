@@ -1,0 +1,64 @@
+<h2 class="text-center mb-4">Create Article Form</h2>
+
+<div class="container">
+    <!-- Form -->
+    <form #articleForm="ngForm" (ngSubmit)="onSubmit(articleForm)">
+        <div class="card shadow-sm p-4">
+            <div ngModelGroup="article">
+                <!-- Article Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Article Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Article Name" required name="name"
+                        ngModel #name="ngModel" />
+                    <!-- Error message if edited or sent -->
+                    <div *ngIf="(name.invalid && name.touched) || (articleForm.submitted && name.invalid)"
+                        class="text-danger">
+                        Article name is required
+                    </div>
+                </div>
+
+                <!-- Article Price -->
+                <div class="mb-3">
+                    <label for="price" class="form-label">Article Price (€)</label>
+                    <input type="number" class="form-control" id="price" placeholder="Article Price" required
+                        name="price" ngModel #price="ngModel" min="0" />
+                    <!-- Error message if edited or sent -->
+                    <div *ngIf="(price.invalid && price.touched) || (articleForm.submitted && price.invalid)"
+                        class="text-danger">
+                        <div *ngIf="price.errors?.['required']">Article price is required</div>
+                        <div *ngIf="price.errors?.['min']">Price must be a positive number</div>
+                    </div>
+                </div>
+
+                <!-- Image URL -->
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">Image URL</label>
+                    <input type="text" class="form-control" id="imageUrl" placeholder="Article Image URL" required
+                        name="imageUrl" ngModel #imageUrl="ngModel"
+                        pattern="^https?:\/\/[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\.[a-zA-Z]{2,3}\/[a-zA-Z0-9\-\.]+(\.[a-zA-Z]{2,4})$" />
+                    <!-- Error message if edited or sent -->
+                    <div *ngIf="(imageUrl.invalid && imageUrl.touched) || (articleForm.submitted && imageUrl.invalid)"
+                        class="text-danger">
+                        <div *ngIf="imageUrl.errors?.['required']">
+                            Article Image URL is required
+                        </div>
+                        <div *ngIf="imageUrl.errors?.['pattern']">
+                            Article Image URL does not seem to be a valid URL
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Is it on sale? -->
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="isOnSale" name="isOnSale" ngModel />
+                    <label class="form-check-label" for="isOnSale">On Sale</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100">
+                    Create
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,75 @@
+<h2 class="text-center mb-4">Create Article Form</h2>
+
+<div class="container">
+    <!-- Form -->
+    <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+        <div class="card shadow-sm p-4">
+            <div>
+                <!-- Article Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Article Name</label>
+                    <input type="text" class="form-control" id="name" formControlName="name"
+                        placeholder="Article Name" />
+
+                    <!-- Error message if edited or sent -->
+                    <div *ngIf="(articleForm.get('name')?.touched || submitted) && articleForm.get('name')?.errors"
+                        class="text-danger">
+                        <div *ngIf="articleForm.get('name')?.errors?.['required']">
+                            Article name is required
+                        </div>
+                        <div *ngIf="articleForm.get('name')?.errors?.['forbiddenName']">
+                            The following names are not allowed: Prueba, Test, Mock, Fake
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article Price -->
+                <div class="mb-3">
+                    <label for="price" class="form-label">Article Price (€)</label>
+                    <input type="number" class="form-control" id="price" formControlName="price"
+                        placeholder="Article Price" />
+
+                    <!-- Error message if edited or sent -->
+                    <div *ngIf="(articleForm.get('price')?.touched || submitted) && articleForm.get('price')?.errors"
+                        class="text-danger">
+                        <div *ngIf="articleForm.get('price')?.errors?.['required']">
+                            Article Price is required
+                        </div>
+                        <div *ngIf="articleForm.get('price')?.errors?.['min']">
+                            The minimum price is 0.1€
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image URL -->
+                <div class="mb-3">
+                    <label for="imageUrl" class="form-label">Image URL</label>
+                    <input type="text" class="form-control" id="imageUrl" formControlName="imageUrl"
+                        placeholder="Article Image URL" />
+
+                    <!-- Error message if edited or sent -->
+                    <div *ngIf="(articleForm.get('imageUrl')?.touched || submitted) && articleForm.get('imageUrl')?.errors"
+                        class="text-danger">
+                        <div *ngIf="articleForm.get('imageUrl')?.errors?.['required']">
+                            Article Image URL is required
+                        </div>
+                        <div *ngIf="articleForm.get('imageUrl')?.errors?.['pattern']">
+                            Article Image URL does not seem to be a valid URL
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Is it on sale? -->
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="isOnSale" formControlName="isOnSale" />
+                    <label class="form-check-label" for="isOnSale">On Sale</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100">
+                    Create
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
