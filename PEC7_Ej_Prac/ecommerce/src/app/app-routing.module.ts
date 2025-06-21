@@ -1,27 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArticleDetailComponent } from './article-detail/article-detail.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ArticleListComponent } from './article-list/article-list.component';
-import { ArticleNewReactiveComponent } from './article-new-reactive/article-new-reactive.component';
-import { authGuard } from './guards/auth.guard';
+import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { ArticleListComponent } from './article/article-list/article-list.component';
+import { ArticleNewReactiveComponent } from './article/article-new-reactive/article-new-reactive.component';
+import { authGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
-  // Login
-  { path: 'login', component: LoginComponent },
-  // Register
-  { path: 'register', component: RegisterComponent },
-  // Article list
-  { path: 'article/list', component: ArticleListComponent },
-  // Create article -> Access if guard returns true
   {
-    path: 'article/create',
-    component: ArticleNewReactiveComponent,
-    canActivate: [authGuard],
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
-  // Article details
-  { path: 'article/:id', component: ArticleDetailComponent },
+  {
+    path: 'article',
+    loadChildren: () =>
+      import('./article/article.module').then((m) => m.ArticleModule),
+  },
 ];
 
 @NgModule({

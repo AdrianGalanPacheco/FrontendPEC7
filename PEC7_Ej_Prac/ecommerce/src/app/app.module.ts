@@ -6,17 +6,17 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArticleItemComponent } from './article-item/article-item.component';
-import { ArticleListComponent } from './article-list/article-list.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ArticleNewTemplateComponent } from './article-new-template/article-new-template.component';
-import { ArticleNewReactiveComponent } from './article-new-reactive/article-new-reactive.component';
+import { ArticleItemComponent } from './article/article-item/article-item.component';
+import { ArticleListComponent } from './article/article-list/article-list.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ArticleNewTemplateComponent } from './article/article-new-template/article-new-template.component';
+import { ArticleNewReactiveComponent } from './article/article-new-reactive/article-new-reactive.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DefaultImagePipe } from './pipe/default-image.pipe';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ArticleDetailComponent } from './article-detail/article-detail.component';
-import { ArticleAppInterceptor } from './interceptors/article-app.interceptor';
+import { DefaultImagePipe } from './shared/pipe/default-image.pipe';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component';
+import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
+import { ArticleAppInterceptor } from './shared/interceptors/article-app.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,11 +25,7 @@ import { ArticleAppInterceptor } from './interceptors/article-app.interceptor';
     ArticleListComponent,
     NavbarComponent,
     ArticleNewTemplateComponent,
-    ArticleNewReactiveComponent,
     DefaultImagePipe,
-    LoginComponent,
-    RegisterComponent,
-    ArticleDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -40,7 +40,7 @@ export class RegisterComponent {
       next: () => {
         this.registerFailed = false;
         this.registerSuccess = true;
-        this.router.navigate(['/login']);
+        this.router.navigate(['/user/login']);
       },
       // If register fails, sets the error
       error: () => {

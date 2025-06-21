@@ -6,8 +6,8 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
-import { Article } from '../models/article';
-import { ArticleService } from '../services/article.service';
+import { Article } from '../../shared/models/article';
+import { ArticleService } from '../../shared/services/article.service';
 
 // Names validator
 function NameArticleValidator(

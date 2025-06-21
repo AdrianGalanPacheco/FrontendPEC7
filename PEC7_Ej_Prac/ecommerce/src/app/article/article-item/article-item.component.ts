@@ -6,9 +6,9 @@ import {
   EventEmitter,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { Article } from '../models/article';
+import { Article } from '../../shared/models/article';
 /* Exercise 7: Import ArticleQuantityChange */
-import { ArticleQuantityChange } from '../models/article-quantity-change';
+import { ArticleQuantityChange } from '../../shared/models/article-quantity-change';
 import { Router } from '@angular/router';
 
 @Component({
